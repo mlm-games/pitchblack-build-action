@@ -52,6 +52,13 @@ else
     git clone "$DEVICE_TREE" tmp_device_tree
 fi
 
+# If DEVICE_TREE is not provided, default to the current repository
+if [ -z "$DEVICE_TREE" ]; then
+    DEVICE_TREE="https://github.com/${GITHUB_REPOSITORY}"
+    echo "DEVICE_TREE not specified. Using current repository: ${DEVICE_TREE}"
+    echo "DEVICE_TREE=${DEVICE_TREE}" >> $GITHUB_ENV
+fi
+
 # Check if DEVICE_NAME or DEVICE_PATH are default or not provided
 if [ -z "$DEVICE_NAME" ] || [ -z "$DEVICE_PATH" ]; then
     echo "Extracting variables from .mk files..."
