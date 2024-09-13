@@ -17,7 +17,7 @@ inputs:
       - android-6.0
   DEVICE_TREE:
     description: 'Custom Recovery Tree URL (your device tree repository)'
-    default: "https://github.com/${{ github.repository }}"
+    default: ''
     type: string
    DEVICE_TREE_BRANCH:
     description: 'Custom Recovery Tree Branch (leave blank to use the default branch of the repository)'
@@ -53,8 +53,6 @@ runs:
         echo "DEVICE_NAME=${{ inputs.DEVICE_NAME }}" >> $GITHUB_ENV
         echo "DEVICE_PATH=${{ inputs.DEVICE_PATH }}" >> $GITHUB_ENV
         echo "BUILD_TARGET=${{ inputs.BUILD_TARGET }}" >> $GITHUB_ENV
-        echo "LDCHECK=${{ inputs.LDCHECK }}" >> $GITHUB_ENV
-        echo "LDCHECKPATH=${{ inputs.LDCHECKPATH }}" >> $GITHUB_ENV
 
     - name: 'Build PBRP'
       shell: bash
